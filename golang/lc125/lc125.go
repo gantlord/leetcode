@@ -1,20 +1,27 @@
 package lc125
 
 import (
-	"regexp"
 	"strings"
+	"unicode"
 )
+
+func alphaNumericMapper(r rune) rune {
+	if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
+		return -1
+	}
+	return r
+}
 
 func isPalindrome(s string) bool {
 	sLower := strings.ToLower(s)
-	r, err := regexp.Compile("[^a-z0-9]+")
-	if err != nil {
-		return false
+	sClean := strings.Map(alphaNumericMapper, sLower)
+	i, j := 0, len(sClean)-1
+	for i < j {
+		if sClean[i] != sClean[j] {
+			return false
+		}
+		i++
+		j--
 	}
-	sClean := r.ReplaceAllString(sLower, "")
-	sCleanReverseRunes := make([]rune, len(sClean))
-	for i, c := range sClean {
-		sCleanReverseRunes[len(sClean)-i-1] = c
-	}
-	return sClean == string(sCleanReverseRunes)
+	return true
 }
