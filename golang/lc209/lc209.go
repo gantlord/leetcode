@@ -1,9 +1,11 @@
 package lc209
 
+import "math"
+
 func minSubArrayLen(target int, nums []int) int {
 	l, r := 0, 0
 	sum := nums[0]
-	minLen := 100001
+	minLen := math.MaxInt
 
 	for l < len(nums) {
 		if sum >= target {
@@ -20,7 +22,7 @@ func minSubArrayLen(target int, nums []int) int {
 			sum += nums[r]
 		}
 	}
-	if minLen == 100001 {
+	if minLen == math.MaxInt {
 		return 0
 	} else {
 		return minLen
