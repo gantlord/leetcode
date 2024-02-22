@@ -12,9 +12,7 @@ func isValidSudoku(board [][]byte) bool {
 			if columns[i][v] || rows[j][v] || boxes[boxIndex][v] {
 				return false
 			}
-			columns[i][v] = true
-			rows[j][v] = true
-			boxes[boxIndex][v] = true
+			columns[i][v], rows[j][v], boxes[boxIndex][v] = true, true, true
 		}
 	}
 	return true
