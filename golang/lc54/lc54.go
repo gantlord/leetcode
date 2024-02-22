@@ -22,34 +22,32 @@ func spiralOrder(matrix [][]int) []int {
 			if j == rLimit {
 				direction = Down
 				rLimit--
-				i++
-			} else {
-				j++
 			}
 		case Down:
 			if i == dLimit {
 				direction = Left
 				dLimit--
-				j--
-			} else {
-				i++
 			}
 		case Left:
 			if j == lLimit {
 				direction = Up
 				lLimit++
-				i--
-			} else {
-				j--
 			}
 		case Up:
 			if i == uLimit {
 				direction = Right
 				uLimit++
-				j++
-			} else {
-				i--
 			}
+		}
+		switch direction {
+		case Right:
+			j++
+		case Down:
+			i++
+		case Left:
+			j--
+		case Up:
+			i--
 		}
 	}
 	return output
