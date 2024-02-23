@@ -5,45 +5,129 @@ import (
 	"testing"
 )
 
-func Test_twoSum(t *testing.T) {
+func Test_addTwoNumbers(t *testing.T) {
 	type args struct {
-		nums   []int
-		target int
+		l1 *ListNode
+		l2 *ListNode
 	}
 	tests := []struct {
 		name string
 		args args
-		want []int
+		want *ListNode
 	}{
 		{
 			name: "Example 1",
 			args: args{
-				nums:   []int{2, 7, 11, 15},
-				target: 9,
+				l1: &ListNode{
+					Val: 2,
+					Next: &ListNode{
+						Val: 4,
+						Next: &ListNode{
+							Val: 3,
+						},
+					},
+				},
+				l2: &ListNode{
+					Val: 5,
+					Next: &ListNode{
+						Val: 6,
+						Next: &ListNode{
+							Val: 4,
+						},
+					},
+				},
 			},
-			want: []int{0, 1},
+			want: &ListNode{
+				Val: 7,
+				Next: &ListNode{
+					Val: 0,
+					Next: &ListNode{
+						Val: 8,
+					},
+				},
+			},
 		},
 		{
 			name: "Example 2",
 			args: args{
-				nums:   []int{3, 2, 4},
-				target: 6,
+				l1: &ListNode{
+					Val: 0,
+				},
+				l2: &ListNode{
+					Val: 0,
+				},
 			},
-			want: []int{1, 2},
+			want: &ListNode{
+				Val: 0,
+			},
 		},
 		{
 			name: "Example 3",
 			args: args{
-				nums:   []int{3, 3},
-				target: 6,
+				l1: &ListNode{
+					Val: 9,
+					Next: &ListNode{
+						Val: 9,
+						Next: &ListNode{
+							Val: 9,
+							Next: &ListNode{
+								Val: 9,
+								Next: &ListNode{
+									Val: 9,
+									Next: &ListNode{
+										Val: 9,
+										Next: &ListNode{
+											Val: 9,
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				l2: &ListNode{
+					Val: 9,
+					Next: &ListNode{
+						Val: 9,
+						Next: &ListNode{
+							Val: 9,
+							Next: &ListNode{
+								Val: 9,
+							},
+						},
+					},
+				},
 			},
-			want: []int{0, 1},
+			want: &ListNode{
+				Val: 8,
+				Next: &ListNode{
+					Val: 9,
+					Next: &ListNode{
+						Val: 9,
+						Next: &ListNode{
+							Val: 9,
+							Next: &ListNode{
+								Val: 0,
+								Next: &ListNode{
+									Val: 0,
+									Next: &ListNode{
+										Val: 0,
+										Next: &ListNode{
+											Val: 1,
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := twoSum(tt.args.nums, tt.args.target); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("twoSum() = %v, want %v", got, tt.want)
+			if got := addTwoNumbers(tt.args.l1, tt.args.l2); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("addTwoNumbers() = %v, want %v", got, tt.want)
 			}
 		})
 	}
