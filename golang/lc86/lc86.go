@@ -13,17 +13,16 @@ func partition(head *ListNode, x int) *ListNode {
 	ptrLT, ptrGTE := headLT, headGTE
 	ptr := head
 	for ptr != nil {
-		next := ptr.Next
 		if ptr.Val < x {
 			ptrLT.Next = ptr
 			ptrLT = ptr
 		} else {
 			ptrGTE.Next = ptr
 			ptrGTE = ptr
-			ptrGTE.Next = nil
 		}
-		ptr = next
+		ptr = ptr.Next
 	}
 	ptrLT.Next = headGTE.Next
+	ptrGTE.Next = nil
 	return headLT.Next
 }
