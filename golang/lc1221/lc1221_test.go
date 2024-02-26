@@ -10,7 +10,7 @@ func Test_balancedStringSplit(t *testing.T) {
 		name string
 		args args
 		want int
-	}{lc
+	}{
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
