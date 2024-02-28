@@ -2,7 +2,7 @@ package lc1309
 
 func getLetter(substring []byte) byte {
 	val := (substring[0]-'0')*10 + substring[1] - '0'
-	return 'a' + val - 1
+	return '`' + val
 }
 
 func freqAlphabets(s string) string {
