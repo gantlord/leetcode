@@ -6,18 +6,20 @@ func getLetter(substring []byte) byte {
 }
 
 func freqAlphabets(s string) string {
-	result := []byte{}
+	result := make([]byte, 0, 1000)
 	buffer := make([]byte, 2)
 	for i := 0; i < len(s); {
+		var letter byte
 		if i < len(s)-2 && s[i+2] == '#' {
 			buffer[0], buffer[1] = s[i], s[i+1]
-			result = append(result, getLetter(buffer))
+			letter = getLetter(buffer)
 			i += 3
 		} else {
 			buffer[0], buffer[1] = '0', s[i]
-			result = append(result, getLetter(buffer))
+			letter = getLetter(buffer)
 			i++
 		}
+		result = append(result, letter)
 	}
 	return string(result)
 }
