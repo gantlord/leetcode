@@ -1,6 +1,8 @@
 package lc3019
 
-import "strings"
+import (
+	"strings"
+)
 
 func countKeyChanges(s string) int {
 	s = strings.ToLower(s)
