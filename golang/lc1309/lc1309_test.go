@@ -36,7 +36,7 @@ func generateUnpredictableInput(size int) string {
 }
 
 func BenchmarkFreqAlphabetsPredictable(b *testing.B) {
-	input := generatePredictableInput(10000) // Adjust size for your needs
+	input := generatePredictableInput(1000) // Adjust size for your needs
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		freqAlphabets(input)
@@ -44,7 +44,7 @@ func BenchmarkFreqAlphabetsPredictable(b *testing.B) {
 }
 
 func BenchmarkFreqAlphabetsUnpredictable(b *testing.B) {
-	input := generateUnpredictableInput(10000) // Adjust size for your needs
+	input := generateUnpredictableInput(1000) // Adjust size for your needs
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		freqAlphabets(input)
